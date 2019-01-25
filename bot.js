@@ -3527,27 +3527,7 @@ client.on("message", message => {
   }
 });
 
-client.on('message',async message => {
-  if(message.content === '-unbanall') {
-    var user = message.mentions.users.first();
-    if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(':x:|ADMINISTRATORلا توجد لديك صلاحية `');
-    if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("I Don't Have BAN_MEMBERS Permission");
-    const guild = message.guild;
 
-  message.guild.fetchBans().then(ba => {
-  ba.forEach(ns => {
-  message.guild.unban(ns);
-  const embed= new Discord.RichEmbed()
-        .setColor("RANDOM")
-        
-    .setFooter('Requested by '+message.author.username, message.author.avatarURL)
-  message.channel.sendEmbed(embed);
-  guild.owner.send(سيرفر : ${guild.name}
-  **تم فك الباند عن الجميع بواسطة** : <@${message.author.id}>) 
-  });
-  });
-  }
-  });
 
 
 // THIS  MUST  BE  THIS  WAY
