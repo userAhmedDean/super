@@ -3538,7 +3538,7 @@ client.on("message", message => {
       return;
     }
     if(!message.guild.member(mmember).voiceChannel) return message.channel.send("The User Is Not In A Voice Channel");
-    let rank = message.guild.member(message.author).roles.find('name', 'اسم الرتبه الي تستخدم الكوماند');
+    let rank = message.guild.member(message.author).roles.find('name', 'Support Team');
 
     if (!rank) return message.channel.send('You Dont Have Perm');
 
