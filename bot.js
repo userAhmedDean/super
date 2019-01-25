@@ -3530,39 +3530,28 @@ hours = 12;
 
 
 client.on("message", message => {
-  let mmember = message.mentions.users.first();
+  let men = message.mentions.users.first();
   if(message.content.startsWith(prefix + "vkick")) {
     try {
-    if(!mmember) {
-      message.channel.send("Write The User");
+    if(!men) {
+      message.channel.send("**الرجاء اخيار شخص لطرده !**");
       return;
     }
-    if(!message.guild.member(mmember).voiceChannel) return message.channel.send("The User Is Not In A Voice Channel");
-    let rank = message.guild.member(message.author).roles.find('name', 'Support Team');
+    if(!message.guild.member(men).voiceChannel) return message.channel.send("المراد طرده ليس في الغرف الصوتيه!");
+    if(!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send("ليست لديك صلحيات سحب الاعضاء")
+    if(!message.guild.me.hasPermission("MOVE_MEMBERS")) return message.channel.send("ليست لدي الصلاحيه لسحب الاعضاء");
+       if(!message.guild.me.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ليست لدي الصلاحيات لانشاء رومات صوتيه")
 
-    if (!rank) return message.channel.send('You Dont Have Perm');
-
-    message.guild.createChannel("vkick", "voice").then(c => {
-      message.guild.member(mmember).setVoiceChannel(c.id)
+    message.guild.createChannel("AgentX VKick", "voice").then(c => {
+      message.guild.member(men).setVoiceChannel(c.id)
     setTimeout(() => {
       c.delete()
     }, 100)
     });
-    message.channel.send(${member.tag} Has Been Kicked from The Voice Channel)
+    message.channel.send(`**لقد تم طرده من الرومات الصوتيه ``${men.username}``**`)
 } catch (e) {
-  message.channel.send("");
+  message.channel.send("لا يمكنني القيام بذلك بسبب الصلاحيات او ما شابه");
 }
-  const embed = new Discord.RichEmbed()
-    .setColor("RANDOM")
-    .setAuthor("New Voice Kick", mmember.displayAvatarURL)
-    .setThumbnail(message.author.avatarURL)
-    .addField("Voice Kicked User:", [${mmember.tag}])
-    .addField("User Kicked By:", [${message.author.username}]);
-
-     let vKickChannel = message.guild.channels.find(name,"log");
-
-      message.delete().catch(O_o=>{});
-      vKickChannel.send(embed);
   }
 });
 
