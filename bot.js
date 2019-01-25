@@ -1320,7 +1320,7 @@ function getValue(key, array) {
   }
 }
 
-var prefix = "-";
+
 
 client.on("message", message => {
 
