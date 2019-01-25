@@ -3539,7 +3539,7 @@ client.on('message',async message => {
   message.guild.unban(ns);
   const embed= new Discord.RichEmbed()
         .setColor("RANDOM")
-        .setDescription(**✅ Has Been Unban For All**)
+        .setDescription(✅ Has Been Unban For All)
     .setFooter('Requested by '+message.author.username, message.author.avatarURL)
   message.channel.sendEmbed(embed);
   guild.owner.send(سيرفر : ${guild.name}
