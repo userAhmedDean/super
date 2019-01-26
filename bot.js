@@ -3504,7 +3504,6 @@ hours = 12;
 
 
 const Baron = new Discord.Client();
-const prefix = '-';
 Baron.on("ready", ()=>{
 Baron.user.setActivity('Baron#1500 Development', {type : 'watching'});
 console.log('Loding')
